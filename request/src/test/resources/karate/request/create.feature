@@ -1,5 +1,5 @@
 @GET
-Feature:  Service client Get
+Feature:  Service client POST
   As QA Automation
   I want to create a client
   To validate the status code and response
@@ -10,9 +10,13 @@ Feature:  Service client Get
     Scenario: check the service POST method
 
       * def requestCreate = { "name": '#(name)',"job": "#(job)" }
-
+      * def responsePost = read('classpath:karate/request/responsePost.json')
       Given path 'users'
       And request requestCreate
       When method post
       Then  status 201
-      
+      And match response == responsePost
+      And assert response.name == "morpheus"
+      And assert response.job == "leader"
+      And assert response.id ==
+      And assert response.createdAt == createdAt

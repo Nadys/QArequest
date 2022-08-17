@@ -10,6 +10,7 @@
        Scenario: Check the service GET method
 
          * def responsesGet = read('classpath:Karate/request/responsesGet.json')
+
          Given path 'users','2'
          When method get
          Then status 200

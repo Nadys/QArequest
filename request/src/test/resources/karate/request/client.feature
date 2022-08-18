@@ -16,4 +16,9 @@
          Then status 200
          And match response == responsesGet
          And assert response.support.text == "To keep ReqRes free, contributions towards server costs are appreciated!"
+         And assert response.support.url == "https://reqres.in/#support-heading"
          And assert response.data.email == email
+         And assert response.data.id == 2
+         And assert response.data.first_name == "Janet"
+         And assert response.data.last_name == "Weaver"
+         And assert response.data.avatar == "https://reqres.in/img/faces/2-image.jpg"

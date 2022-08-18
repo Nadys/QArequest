@@ -18,5 +18,6 @@ Feature:  Service client POST
       And match response == responsePost
       And assert response.name == "morpheus"
       And assert response.job == "leader"
-      And assert response.id ==
-      And assert response.createdAt == createdAt
+      And assert response.id == "664"
+      And assert response.createdAt == "2022-08-18T05:44:56.702Z"
+

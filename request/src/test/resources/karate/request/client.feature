@@ -22,3 +22,15 @@
          And assert response.data.first_name == "Janet"
          And assert response.data.last_name == "Weaver"
          And assert response.data.avatar == "https://reqres.in/img/faces/2-image.jpg"
+
+     Scenario Outline: Check the service GET method with users a not exist in data
+
+       Given path 'users', <idUser>
+       When method get
+       Then status <code>
+
+       Examples:
+       |idUser  | code |
+       |1996    | 404  |
+       |"@#$%&."| 404   |
+       |"nadia" | 404   |

@@ -21,12 +21,16 @@ Feature:  Service client POST
 
   Scenario Outline: Check the service POST method with users a not exist
 
-    Given path 'users', <idUser>
-    When method get
+    * def requestCreate = { "name": "#(name)","job": "#(job)" }
+    * def responsePost = read ('classpath: karate/request/responsePost.json')
+    Given path 'users'
+    And request requestCreate
+    And params { "name": <name>, "job": <job> }
+    When method post
     Then status <code>
 
     Examples:
-      |idUser  | code |
-      |1996    | 404  |
-      |"@#$%&."| 404   |
-      |"nadia" | 404   |
+      | name   |   job   | code |
+      | @#$%&. |  @#$%&. | 400  |
+      |  nadia |  nadia  | 404  |
+      |    " " | ""       | 400  |

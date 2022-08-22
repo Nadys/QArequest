@@ -34,3 +34,15 @@
        |1996    | 404  |
        |"@#$%&."| 404   |
        |"nadia" | 404   |
+
+     Scenario Outline: Check the service GET with invalidate users
+
+       Given path 'users', <idUser>
+       When method get
+       Then status <code>
+
+       Examples:
+         |idUser  | code  |
+         |-       | 404   |
+         |1.56    | 404   |
+         |""      | 404   |

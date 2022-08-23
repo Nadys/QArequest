@@ -9,7 +9,7 @@
 
        Scenario: Check the service GET method
 
-         * def responsesGet = read('classpath:Karate/request/responsesGet.json')
+         * def responsesGet = read('classpath:karate/request/responsesGet.json')
 
          Given path 'users','2'
          When method get

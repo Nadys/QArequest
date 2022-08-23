@@ -22,7 +22,9 @@ Feature:  Service client POST
   Scenario Outline: Check the service POST method with users a not exist
 
     * def requestCreate = { "name": "#(name)","job": "#(job)" }
+
     * def responsePost = read ('classpath:karate/request/responsePost.json')
+    
     Given path 'users'
     And request requestCreate
     And params { "name": <name>, "job": <job> }
@@ -30,7 +32,24 @@ Feature:  Service client POST
     Then status 201
 
     Examples:
+
       | name   |   job   |
       | @#$%&. |  @#$%&. |
       |  nadia |  nadia  |
       |    " " | ""      |
+
+  Scenario Outline: Check the service POST with empty fields
+
+    * def requestCreate = { "name": "#(name)","job": "#(job)" }
+    * def responsePost = read ('classpath: karate/request/responsePost.json')
+
+    Given path 'users'
+    And request requestCreate
+    And params { "name": <name>, "job": <job> }
+    When method post
+    Then status 400
+
+      Examples:
+        |name     |job        |
+        |         |"ingeniero"|
+        |"matias" |           |

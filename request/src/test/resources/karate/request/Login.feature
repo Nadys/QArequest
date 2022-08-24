@@ -1,7 +1,7 @@
 Feature:  Service login POST
   As QA Automation
   I want to create a user for login
-  To validate the status code and response
+  To validate the status code 
 
   Background: consume service
     * url url

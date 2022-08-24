@@ -1,4 +1,4 @@
-  @POST
+
    Feature:  Service client Get
      As QA Automation
      I want to consult a client
@@ -9,7 +9,7 @@
 
        Scenario: Check the service GET method
 
-         * def responsesGet = read('classpath:karate/request/responsesGet.jsongit s')
+         * def responsesGet = read('classpath:karate/request/responsesGet.json')
 
          Given path 'users','2'
          When method get
@@ -27,22 +27,22 @@
 
        Given path 'users', <idUser>
        When method get
-       Then status <code>
+       Then status 404
 
        Examples:
-       |idUser  | code |
-       |1996    | 404  |
-       |"@#$%&."| 404   |
-       |"nadia" | 404   |
+       |idUser  |
+       |1996    |
+       |"@#$%&."|
+       |"nadia" |
 
      Scenario Outline: Check the service GET with invalidate users
 
        Given path 'users', <idUser>
        When method get
-       Then status <code>
+       Then status 404
 
        Examples:
-         |idUser  | code  |
-         |-       | 404   |
-         |1.56    | 404   |
-         |""      | 404   |
+         |idUser  |
+         | "-"      |
+         |1.56    |
+         |" "     |

@@ -3,6 +3,8 @@
     "url": "https://reqres.in/api/",
     "email": "janet.weaver@reqres.in",
     "name": "morpheus",
-    "job": "leader"
+    "job": "leader",
+    "email_login": "eve.holt@reqres.in",
+    "password": "cityslicka"
   }
 }

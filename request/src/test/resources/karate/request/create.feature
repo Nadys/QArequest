@@ -1,4 +1,3 @@
-@GET
 Feature:  Service client POST
   As QA Automation
   I want to create a client
@@ -9,12 +8,13 @@ Feature:  Service client POST
 
     Scenario: check the service POST method
 
-      * def requestCreate = { "name": "#(name)","job": "#(job)" }
+      * def requestCreate = {"name": "#(name)","job": "#(job)"}
       * def responsePost = read('classpath:karate/request/responsePost.json')
+
       Given path 'users'
       And request requestCreate
       When method post
-      Then  status 201
+      Then status 201
       And match response == responsePost
       And assert response.name == name
       And assert response.job == job
@@ -41,17 +41,17 @@ Feature:  Service client POST
 
   Scenario Outline: Check the service POST with empty fields
 
-    * def requestCreate = { "name": "#(name)","job": "#(job)" }
-    * def responsePost = read ('classpath: karate/request/responsePost.json')
+    * def requestCreate = {"name":'#(name)',"job":'#(job)'}
+    * def responsePost = read('classpath:karate/request/responsePost.json')
 
     Given path 'users'
     And request requestCreate
-    And params { "name": <name>, "job": <job> }
+    And params { name: <name>, job: <job> }
     When method post
-    Then status 400
+    Then status 201
 
-      Examples:
-        |name     |job        |
-        |         |"ingeniero"|
-        |"matias" |           |
+    Examples:
+      |name     |job        |
+      |   " "   |"ingeniero"|
+      |"matias" |    " "    |
 
